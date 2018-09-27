@@ -1,31 +1,22 @@
-package com.example.orderdetailsservice;
+package com.example.Zuulapigateway.ValueObjects;
 
-
-
-public class OrderDetails {
-
+public class OrderDetailsVO {
     private String orderId;
     private String productId;
     private String quantity;
     private String productDesc;
-    private int length;
-    private int breadth;
-    private int height;
 
-    public  OrderDetails()
+    public  OrderDetailsVO()
     {
 
     }
-    public OrderDetails(String OrderId, String ProductId, String Quantity, String ProductDesc, int Length, int Breadth, int Height)
+    public OrderDetailsVO(String OrderId, String ProductId, String Quantity, String ProductDesc)
     {
         super();
         this.orderId = OrderId;
         this.productId = ProductId;
         this.quantity = Quantity;
         this.productDesc = ProductDesc;
-        this.length = Length;
-        this.breadth = Breadth;
-        this.height = Height;
     }
     public String getOrderId() {
         return orderId;
@@ -47,7 +38,9 @@ public class OrderDetails {
         return quantity;
     }
 
-    public void setQuantity(String quantity) { this.quantity = quantity; }
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
 
     public String getProductDesc() {
         return productDesc;
@@ -56,16 +49,4 @@ public class OrderDetails {
     public void setProductDesc(String productDesc) {
         this.productDesc = productDesc;
     }
-
-    public int getLength() { return length; }
-
-    public void setLength(int Length) { this.length = Length; }
-
-    public int getBreadth() { return breadth; }
-
-    public void setBreadth(int Breadth) { this.breadth = Breadth; }
-
-    public int getHeight() { return height; }
-
-    public void setHeight(int Height) { this.height = Height; }
 }

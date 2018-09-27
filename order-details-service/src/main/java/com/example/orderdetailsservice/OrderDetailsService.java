@@ -19,6 +19,9 @@ public class OrderDetailsService {
     private static final int PRODUCT_ID = 1;
     private static final int QUANTITY = 2;
     private static final int DESC = 3;
+    private static final int LENGTH = 4;
+    private static final int BREADTH = 5;
+    private static final int HEIGHT = 6;
 
     public List<OrderDetails> readFromCSV()
         {
@@ -38,7 +41,10 @@ public class OrderDetailsService {
                                     tokens[ORDER_ID],
                                     tokens[PRODUCT_ID],
                                     tokens[QUANTITY],
-                                    tokens[DESC]);
+                                    tokens[DESC],
+                                    Integer.parseInt(tokens[LENGTH]),
+                                    Integer.parseInt(tokens[BREADTH]),
+                                    Integer.parseInt(tokens[HEIGHT]) );
                             orderDetails.add(orderDetail);
                     }
 
@@ -65,15 +71,16 @@ public class OrderDetailsService {
             return results;
     }
 
-    public OrderDetails getOrderDetailsById(String id) throws IOException
+    public List<OrderDetails> getOrderDetailsById(String id) throws IOException
     {
         List<OrderDetails> AllOrderDetails = getAllOrderDetails();
         Iterator<OrderDetails> iterator = AllOrderDetails.iterator();
-        OrderDetails orderDetails = null;
+        List<OrderDetails> orderDetails = new ArrayList<OrderDetails>();
+        OrderDetails currentOrder = null;
         while (iterator.hasNext()) {
-            orderDetails = iterator.next();
-            if (id.equals(orderDetails.getOrderId())) {
-                return orderDetails;
+            currentOrder = iterator.next();
+            if (id.equals(currentOrder.getOrderId())) {
+                orderDetails.add(currentOrder);
             }
         }
         return orderDetails;

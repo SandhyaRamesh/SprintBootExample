@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Testing Pick and Pack</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <script>
+        function computeVolume(){
+            var salesOrderID = document.getElementById("salesOrderID").value;
+            var truckID = document.getElementById("truckID").value;
+            var targetUrl = "http://localhost:8082/computeSpace/" + salesOrderID + "/" + truckID;
+            $.get( targetUrl, function(data){
+                document.getElementById("result").innerHTML = "Truck is " + data + " % full";
+            });
+        }
+        function loadTruckData() {
+            var targetUrl = "http://localhost:8080/database-service/AllTruck";
+            $.get( targetUrl, function(data){
+                var truckIdDropDown = document.getElementById("truckID")
+                for( var i = 0; i<data.length; i++){
+                    var option = document.createElement('option');
+                    option.value = data[i].truck_id;
+                    option.text = data[i].model_name;
+                    truckIdDropDown.options.add(option);
+                }
+
+            } );
+        }
+    </script>
+
+</head>
+<body onload="loadTruckData()">
+<center>
+Sales Order ID: <input type="text" id="salesOrderID"><br /><br />
+Truck: <select id="truckID"></select> <br /><br />
+<button onclick="computeVolume()">Compute Space</button><br />
+<p id="result"></p>
+</center>
+</body>
+</html>

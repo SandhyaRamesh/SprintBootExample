@@ -1,9 +1,6 @@
-package com.example.orderdetailsservice;
+package com.example.spacecalculateservice.ValueObjects;
 
-
-
-public class OrderDetails {
-
+public class OrderDetailsVO {
     private String orderId;
     private String productId;
     private String quantity;
@@ -12,11 +9,11 @@ public class OrderDetails {
     private int breadth;
     private int height;
 
-    public  OrderDetails()
+    public  OrderDetailsVO()
     {
 
     }
-    public OrderDetails(String OrderId, String ProductId, String Quantity, String ProductDesc, int Length, int Breadth, int Height)
+    public OrderDetailsVO(String OrderId, String ProductId, String Quantity, String ProductDesc, int Length, int Breadth, int Height)
     {
         super();
         this.orderId = OrderId;
@@ -47,7 +44,9 @@ public class OrderDetails {
         return quantity;
     }
 
-    public void setQuantity(String quantity) { this.quantity = quantity; }
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
 
     public String getProductDesc() {
         return productDesc;

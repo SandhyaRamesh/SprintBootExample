@@ -22,7 +22,7 @@ public class OrderDetailsController {
         }
 
         @RequestMapping("/orderById/{id}")
-    public OrderDetails getOrderDetailsById(@PathVariable String id) throws IOException
+    public List<OrderDetails> getOrderDetailsById(@PathVariable String id) throws IOException
     {
         return orderDetailsService.getOrderDetailsById(id);
     }
